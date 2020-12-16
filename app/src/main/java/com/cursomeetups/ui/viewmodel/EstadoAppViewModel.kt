@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class EstadoAppViewModel: ViewModel() {
+class EstadoAppViewModel : ViewModel() {
 
     val componentes: LiveData<ComponentesVisuais> get() = _componentes
-
 
     private var _componentes: MutableLiveData<ComponentesVisuais> =
         MutableLiveData<ComponentesVisuais>().also {
@@ -25,4 +24,3 @@ class ComponentesVisuais(
     val appBar: Boolean = false,
     val bottomNavigation: Boolean = false
 )
-

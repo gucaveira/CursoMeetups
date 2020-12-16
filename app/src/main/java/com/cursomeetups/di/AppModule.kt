@@ -13,9 +13,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-private val URL_BASE = "endereco_api"
-
+private const val URL_BASE = "endereco_api"
 
 val retrofitModule = module {
     single<Retrofit> {
@@ -25,9 +23,7 @@ val retrofitModule = module {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
     single<EventoService> { get<Retrofit>().create(EventoService::class.java) }
-
     single<OkHttpClient> {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -45,7 +41,7 @@ val viewModelModule = module {
 }
 
 val repositoryModule = module {
-    single { EventoRepository(get()) }
+    single<EventoRepository> { EventoRepository(get()) }
 }
 
 val appModules = listOf(

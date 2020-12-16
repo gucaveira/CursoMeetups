@@ -1,6 +1,7 @@
 package com.cursomeetups.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.navigation.fragment.NavHostFragment
@@ -11,7 +12,7 @@ import com.cursomeetups.ui.viewmodel.EstadoAppViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val viewModel: EstadoAppViewModel by viewModel()
     private val controller by lazy {
@@ -22,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         setSupportActionBar(activity_main_toolbar)
         configuraEstadoInicialDosComponentes()
         configuraNavigation()
@@ -42,16 +42,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configuraEstadoBottomNavigation(temComponentes: ComponentesVisuais) {
-        when (temComponentes.bottomNavigation) {
-            true -> main_activity_bottom_navigation.visibility
-            false -> main_activity_bottom_navigation.isGone
+        if (temComponentes.bottomNavigation) {
+            main_activity_bottom_navigation.visibility = View.VISIBLE
+        } else {
+            main_activity_bottom_navigation.visibility = View.GONE
         }
     }
 
     private fun configuraEstadoAppBar(temComponentes: ComponentesVisuais) {
-        when (temComponentes.appBar) {
-            true -> supportActionBar?.show()
-            false -> supportActionBar?.hide()
+        if (temComponentes.appBar) {
+            supportActionBar?.show()
+        } else {
+            supportActionBar?.hide()
         }
     }
 
