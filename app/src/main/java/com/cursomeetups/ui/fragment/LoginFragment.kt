@@ -18,7 +18,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 private const val RC_SIGN_IN = 1
 
-class LoginFragment : BaseFragment(R.layout.inicio) {
+class LoginFragment : Fragment(R.layout.inicio) {
 
     private val controller by lazy {
         findNavController()
