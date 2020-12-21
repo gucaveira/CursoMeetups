@@ -53,7 +53,7 @@ class ListaEventosFragment : BaseFragment(R.layout.lista_eventos) {
     private fun buscaEventos(completada: () -> Unit = {}) {
         viewModel.buscaTodos().observe(viewLifecycleOwner) {
             it?.let { resultado ->
-                resultado.dado?.let { this::atualiza }
+                resultado.dado?.let(this::atualiza)
                 resultado.erro?.let { erro ->
                     view?.snackBar(erro)
                 }

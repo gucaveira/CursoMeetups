@@ -68,7 +68,7 @@ class ListaEventosAdapter(
             preencheCampos()
         }
 
-        private fun configuraImagem() {
+        private fun configuraInscritos() {
             if (this.evento.inscritos > 0) {
                 containerInscritos.visibility = VISIBLE
             } else {
@@ -76,7 +76,7 @@ class ListaEventosAdapter(
             }
         }
 
-        private fun configuraInscritos() {
+        private fun configuraImagem() {
             if (this.evento.imagem.isNullOrBlank()) {
                 imagem.visibility = GONE
             } else {
