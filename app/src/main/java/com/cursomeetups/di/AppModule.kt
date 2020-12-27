@@ -1,10 +1,12 @@
 package com.cursomeetups.di
 
+import com.cursomeetups.repository.DispositivoRepository
 import com.cursomeetups.repository.EventoRepository
 import com.cursomeetups.ui.viewmodel.DetalhesEventoViewModel
 import com.cursomeetups.ui.viewmodel.EstadoAppViewModel
 import com.cursomeetups.ui.viewmodel.ListaEventoViewModel
 import com.cursomeetups.ui.viewmodel.ListaInscricoesViewModel
+import com.cursomeetups.webclient.DispositivoService
 import com.cursomeetups.webclient.EventoService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,6 +26,7 @@ val retrofitModule = module {
             .build()
     }
     single<EventoService> { get<Retrofit>().create(EventoService::class.java) }
+    single<DispositivoService> { get<Retrofit>().create(DispositivoService::class.java) }
     single<OkHttpClient> {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -42,6 +45,7 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<EventoRepository> { EventoRepository(get()) }
+    single<DispositivoRepository> { DispositivoRepository(get()) }
 }
 
 val appModules = listOf(
