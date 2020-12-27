@@ -1,5 +1,6 @@
 package com.cursomeetups.di
 
+import com.cursomeetups.preferences.FirebaseTokenPreferences
 import com.cursomeetups.repository.DispositivoRepository
 import com.cursomeetups.repository.EventoRepository
 import com.cursomeetups.ui.viewmodel.DetalhesEventoViewModel
@@ -45,11 +46,16 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<EventoRepository> { EventoRepository(get()) }
-    single<DispositivoRepository> { DispositivoRepository(get()) }
+    single<DispositivoRepository> { DispositivoRepository(get(), get()) }
+}
+
+val preferencesModule = module {
+    single { FirebaseTokenPreferences(get()) }
 }
 
 val appModules = listOf(
     retrofitModule,
     viewModelModule,
     repositoryModule,
+    preferencesModule
 )

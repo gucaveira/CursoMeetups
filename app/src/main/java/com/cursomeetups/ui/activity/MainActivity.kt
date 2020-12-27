@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.cursomeetups.R
+import com.cursomeetups.model.Dispositivo
+import com.cursomeetups.preferences.FirebaseTokenPreferences
+import com.cursomeetups.repository.DispositivoRepository
 import com.cursomeetups.ui.viewmodel.ComponentesVisuais
 import com.cursomeetups.ui.viewmodel.EstadoAppViewModel
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -25,6 +30,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setSupportActionBar(activity_main_toolbar)
         configuraEstadoInicialDosComponentes()
         configuraNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tentaReenviarToken()
+    }
+
+    private fun tentaReenviarToken() {
+        val preferences: FirebaseTokenPreferences by inject()
+        if (!preferences.enviado) {
+            val repository: DispositivoRepository by inject()
+            FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                repository.salva(Dispositivo(token = token))
+            }
+        }
     }
 
     private fun configuraNavigation() {
