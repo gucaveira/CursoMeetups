@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "817636820290",
+    "project_id": "cursoaluranotificacao",
+    "storage_bucket": "cursoaluranotificacao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817636820290:android:a66803cc530045c83f34db",
+        "android_client_info": {
+          "package_name": "com.cursomeetups"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817636820290-pk4n22me3jdarnutuvq81ru8m29rdnug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwnLECB7pwhrzewQq0Th5LOvOFMb5H3Nk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817636820290-pk4n22me3jdarnutuvq81ru8m29rdnug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817636820290:android:dd178030886d9c953f34db",
+        "android_client_info": {
+          "package_name": "com.gustavo.cursomeetups"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817636820290-pk4n22me3jdarnutuvq81ru8m29rdnug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwnLECB7pwhrzewQq0Th5LOvOFMb5H3Nk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817636820290-pk4n22me3jdarnutuvq81ru8m29rdnug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
