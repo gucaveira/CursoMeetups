@@ -4,12 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
-private const val CHAVE_ENVIADO = "enviado"
-
 class FirebaseTokenPreferences(context: Context) {
 
     companion object {
         const val path = "com.gustavo.cursomeetups.preferences.FirebaseTokenPreferences"
+        private const val CHAVE_ENVIADO = "enviado"
     }
 
     private val preferences: SharedPreferences = context.getSharedPreferences(path,
