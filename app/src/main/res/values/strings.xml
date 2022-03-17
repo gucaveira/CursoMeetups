@@ -4,6 +4,8 @@
     <string name="icone_inscritos">icone inscritos</string>
     <string name="cancelar">Cancelar</string>
     <string name="inscrever">Inscrever</string>
-    <string name="channel_name">principal</string>
-    <string name="channel_description">canal principal</string>
+    <string name="canal_nome_principal">principal</string>
+    <string name="canal_descricao_principal">descrição principal</string>
+    <string name="canal_nome_secundario">secundario</string>
+    <string name="canal_descricao_secundario">descrição secundaria</string>
 </resources>

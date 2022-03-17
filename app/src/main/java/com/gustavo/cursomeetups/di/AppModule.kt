@@ -1,5 +1,6 @@
 package com.gustavo.cursomeetups.di
 
+import com.gustavo.cursomeetups.notifications.CanaisNotificacao
 import com.gustavo.cursomeetups.preferences.FirebaseTokenPreferences
 import com.gustavo.cursomeetups.repository.DispositivoRepository
 import com.gustavo.cursomeetups.repository.EventoRepository
@@ -57,9 +58,15 @@ val preferencesModule = module {
     single { FirebaseTokenPreferences(get()) }
 }
 
+val notificacaoModule = module {
+    single { CanaisNotificacao(get()) }
+    //single { get<Context>().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
+}
+
 val appModules = listOf(
     retrofitModule,
     viewModelModule,
     repositoryModule,
-    preferencesModule
+    preferencesModule,
+    notificacaoModule
 )
