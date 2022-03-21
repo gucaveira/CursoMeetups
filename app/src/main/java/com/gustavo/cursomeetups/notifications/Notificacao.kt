@@ -2,7 +2,9 @@ package com.gustavo.cursomeetups.notifications
 
 import android.app.Notification
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.core.app.NotificationCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -10,6 +12,7 @@ import coil.imageLoader
 import coil.request.ImageRequest
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.gustavo.cursomeetups.R
+import com.gustavo.cursomeetups.ui.activity.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,8 +55,17 @@ class Notificacao(val context: Context) {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             //.setStyle(NotificationCompat.BigTextStyle().bigText(data["descricao"]))
             //.setStyle(NotificationCompat.BigPictureStyle().bigPicture(imagem).bigLargeIcon(null))
+            .setContentIntent(CriaAcaoDaNotificacao())
+            .setAutoCancel(true)
             .setStyle(estilo)
             .build()
+    }
+
+    private fun CriaAcaoDaNotificacao(): PendingIntent? {
+        val intent = Intent(context, MainActivity::class.java).apply {
+            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        return PendingIntent.getActivity(context, 0, intent, 0)
     }
 
     private suspend fun tentabuscarImagem(imagem: String?): Bitmap? {
