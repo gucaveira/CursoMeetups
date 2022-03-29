@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.messaging.FirebaseMessaging
 import com.gustavo.cursomeetups.model.Evento
 import com.gustavo.cursomeetups.repository.EventoRepository
 import kotlinx.coroutines.launch
@@ -22,6 +23,10 @@ class ListaInscricoesViewModel(private val repository: EventoRepository) : ViewM
             repository.buscaInscricoes().fold(
                 onSuccess = {
                     _eventoData.value = it
+                    it.forEach { evento ->
+                        FirebaseMessaging.getInstance().subscribeToTopic(evento.id)
+                    }
+
                 },
                 onFailure = { throwable ->
                     _throwable.value = throwable.message
